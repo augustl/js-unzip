@@ -18,9 +18,9 @@ Very alpha, is among other things not yet able to inflate deflated (uncompress c
 
 h2. Credits
 
-* Jacob Seidelin for his JavaScript EXIF Reader. http://blog.nihilogic.dk/2008/05/reading-exif-data-with-javascript.html
-* Jonas Höglund for his cute little zip parser. http://etc.firefly.nu/js/zip/zipParser.js
-* "Cheeso" for his js zip library. http://cheeso.members.winisp.net/srcview.aspx?dir=js-unzip&file=js-zip.zip
+* Jacob Seidelin for his "JavaScript EXIF Reader":http://blog.nihilogic.dk/2008/05/reading-exif-data-with-javascript.html.
+* Jonas Höglund for his cute little "zip parser":http://etc.firefly.nu/js/zip/zipParser.js. 
+* "Cheeso" for his "js zip library":http://cheeso.members.winisp.net/srcview.aspx?dir=js-unzip&file=js-zip.zip.
 
 h2. About
 
