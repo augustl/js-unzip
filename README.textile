@@ -18,6 +18,12 @@ The test suite runs on Chrome 4, FireFox 3.6, IE7, Opera 10 and Safari 4.0.4.
 
 Very alpha, is among other things not yet able to inflate deflated (uncompress compressed) files.
 
+h2. Credits
+
+* Jacob Seidelin for his JavaScript EXIF Reader. http://blog.nihilogic.dk/2008/05/reading-exif-data-with-javascript.html
+* Jonas Höglund for his cute little zip parser. http://etc.firefly.nu/js/zip/zipParser.js
+* "Cheeso" for his js zip library. http://cheeso.members.winisp.net/srcview.aspx?dir=js-unzip&file=js-zip.zip
+
 h2. About
 
 Written by August Lilleaas <august.lilleaas@gmail.com>. Licensed under the MIT license.
