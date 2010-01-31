@@ -29,7 +29,7 @@ entry.compressionMethod; // Number representing compression method.
                          //   1: No compression. File can be used as-is.
                          //   8: DEFLATE. The most common compression method.
                          //      Use a inflate algorithm to uncompress, such
-                         //      as [TODO: Link here].
+                         //      as http://github.com/augustl/js-inflate/
 entry.compressedSize;    // The size of the commpressed data
 entry.uncompressedSize;  // The size of the data when it's uncompressed
 entry.signature;         // The magic number used to determine if it is in fact
@@ -45,6 +45,28 @@ entry.isUzingZip64();    // Zip64 is for 4gb+ files. Not supported by this lib.
 
 See "http://www.pkware.com/documents/casestudies/APPNOTE.TXT":http://www.pkware.com/documents/casestudies/APPNOTE.TXT for more information about the Zip format, such as all the  compression methods.
 
+h2. Uncompressing with JSInflate
+
+Almost all Zip files are compressed with the deflate algorithm. You can use "JSInflate":http://github.com/augustl/js-inflate to uncompress these Zips.
+
+<pre><code>var blob = ...; // A HTML5 binary file, for example.
+var unzipper = new JSUnzip(blob);
+if (unzipper.isZipFile()) {
+
+  unzipper.readEntries();
+
+  for (var i = 0; i < unzipper.entries.length; i++) {
+    var entry = unzipper.entries[i];
+    if (entry.compressionMethod === 0) {
+      // Uncompressed
+      var uncompressed = entry.data; 
+    } else if (entry.compressionMethod === 8) {
+      // Deflated
+      var inflater = new JSInflate(entry.data);
+      var uncompressed = inflater.inflate();
+    }
+  }
+}</code></pre>
 
 h2. Credits
 
