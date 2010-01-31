@@ -58,17 +58,6 @@
   }
 
   JSUnzip.ZipEntry.prototype = {
-    extract: function () {
-      if (this.compressionMethod === 0) {
-	this.extractedData = this.data;
-      } else if (this.compressionMethod == 8) {
-	// TODO: Write JSInflater :)
-	var inflater = new JSInflater(this.data);
-	inflater.inflate();
-	this.extractedData = inflater.data;
-      }
-    },
-
     isEncrypted: function () {
       return (this.bitFlag & 0x01) === 0x01;
     },

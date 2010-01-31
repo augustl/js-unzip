@@ -1,20 +1,50 @@
 h2. JSUnzip
 
-A javascript library for unzipping files.
+A javascript library for reading the contents of zip files.
+
+NOTE: Does not uncompress/inflate files. Zip is a package format that can use many different compression methods. See "Working with <code>JSUnzip.ZipEntry</code>" below.
 
 <pre><code>var myZip = ... // Get it with an XHR request, HTML5 files, etc.
 var unzipper = new JSUnzip(myZip);
+unsipper.isZipFile();
 unzipper.readEntries();
+unzipper.entries; // Array of JSUnzip.ZipEntry objects.
+</code></pre>
 
-// unzipper.entries is an array of JSUnzip.ZipEntry objects, one
-// for each file in the zip.
-var e = unzipper.entries[0];
-e.fileName;
-e.data; // raw unextracted data</code></pre>
+The test suite runs on Chrome 4, FireFox 3.6, IE7, Opera 10 and Safari 4.0.4. [TODO: Run tests on more browsers.]
 
-The test suite runs on Chrome 4, FireFox 3.6, IE7, Opera 10 and Safari 4.0.4.
+h2. Working with <code>JSUnzip.ZipEntry</code> objects
 
-Very alpha, is among other things not yet able to inflate deflated (uncompress compressed) files.
+After <code>readEntries</code> is called, an array of <code>JSUnzip.ZipEntry</code> objects is created, one per file in the Zip archive.
+
+<pre><code>entry = myZip.entries[0];
+
+// Attributes
+entry.fileName;          // The file name of the entry. Contains the full path.
+                         // Examples:
+                         //   "foo.txt"
+                         //   "directory/bar.jpg"
+entry.data;              // The raw uncompressed data
+entry.compressionMethod; // Number representing compression method.
+                         //   1: No compression. File can be used as-is.
+                         //   8: DEFLATE. The most common compression method.
+                         //      Use a inflate algorithm to uncompress, such
+                         //      as [TODO: Link here].
+entry.compressedSize;    // The size of the commpressed data
+entry.uncompressedSize;  // The size of the data when it's uncompressed
+entry.signature;         // The magic number used to determine if it is in fact
+                         // a zip file.
+entry.versionNeeded;     // Zip specification version needed to work with the file.
+entry.bitFlag;           // Flag for various states
+
+// Functions (mostly for internal use)
+entry.isEncrypted();
+entry.isUsingUtf8();
+entry.isUzingZip64();    // Zip64 is for 4gb+ files. Not supported by this lib.
+</code></pre>
+
+See "http://www.pkware.com/documents/casestudies/APPNOTE.TXT":http://www.pkware.com/documents/casestudies/APPNOTE.TXT for more information about the Zip format, such as all the  compression methods.
+
 
 h2. Credits
 
