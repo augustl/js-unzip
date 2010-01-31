@@ -1,0 +1,23 @@
+h2. JSUnzip
+
+A javascript library for unzipping files.
+
+{{{
+var myZip = ... // Get it with an XHR request, HTML5 files, etc.
+var unzipper = new JSUnzip(myZip);
+unzipper.readEntries();
+
+// unzipper.entries is an array of JSUnzip.ZipEntry objects, one
+// for each file in the zip.
+var e = unzipper.entries[0];
+e.fileName;
+e.data; // raw unextracted data
+}}}
+
+The test suite runs on Chrome 4, FireFox 3.6, IE7, Opera 10 and Safari 4.0.4.
+
+Very alpha, is among other things not yet able to inflate deflated (uncompress compressed) files.
+
+h2. About
+
+Written by August Lilleaas <august.lilleaas@gmail.com>. Licensed under the MIT license.
