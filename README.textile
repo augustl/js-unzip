@@ -6,9 +6,10 @@ NOTE: Does not uncompress/inflate files. Zip is a package format that can use ma
 
 <pre><code>var myZip = ... // Get it with an XHR request, HTML5 files, etc.
 var unzipper = new JSUnzip(myZip);
-unsipper.isZipFile();
-unzipper.readEntries();
-unzipper.entries; // Array of JSUnzip.ZipEntry objects.
+unzipper.isZipFile();      // true or false
+
+unzipper.readEntries();    // Creates "entries"
+unzipper.entries;          // Array of JSUnzip.ZipEntry objects.
 </code></pre>
 
 The test suite runs on Chrome 4, FireFox 3.6, IE7, Opera 10 and Safari 4.0.4. [TODO: Run tests on more browsers.]
