@@ -63,7 +63,7 @@ if (unzipper.isZipFile()) {
       var uncompressed = entry.data; 
     } else if (entry.compressionMethod === 8) {
       // Deflated
-      var uncompressed = JSInflater.inflate(entry.data);
+      var uncompressed = JSInflate.inflate(entry.data);
     }
   }
 }</code></pre>
