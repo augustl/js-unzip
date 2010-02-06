@@ -13,7 +13,7 @@
 
             this.entries = [];
             var e = new JSUnzip.ZipEntry(this.fileContents);
-            while (e.data) {
+            while (typeof(e.data) === "string") {
                 this.entries.push(e);
                 e = new JSUnzip.ZipEntry(this.fileContents);
             }
