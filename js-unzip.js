@@ -35,10 +35,16 @@
         this.compressionMethod  = binaryStream.getNextBytesAsNumber(2);
         this.timeBlob           = binaryStream.getNextBytesAsNumber(4);
 
-        if (this.isEncrypted() ||
-            this.isUsingUtf8() ||
-            this.isUsingBit3TrailingDataDescriptor()) {
-            return;
+        if (this.isEncrypted()) {
+            throw "File contains encrypted entry. Not supported.";
+        }
+
+        if (this.isUsingUtf8()) {
+            throw "File is using UTF8. Not supported.";
+        }
+
+        if (this.isUsingBit3TrailingDataDescriptor()) {
+            throw "File is using bit 3 trailing data descriptor. Not supported.";
         }
 
         this.crc32              = binaryStream.getNextBytesAsNumber(4);
@@ -46,7 +52,7 @@
         this.uncompressedSize   = binaryStream.getNextBytesAsNumber(4);
 
         if (this.isUsingZip64()) {
-            return;
+            throw "File is using Zip64 (4gb+ file size). Not supported";
         }
 
         this.fileNameLength     = binaryStream.getNextBytesAsNumber(2);
