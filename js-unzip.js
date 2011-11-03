@@ -98,7 +98,7 @@
         // why, and do that here if neccesary. So far, I've never gotten a
         // char code higher than 255.
         getByteAt: function (index) {
-            return this.stream.charCodeAt(index);
+            return this.stream.charCodeAt(index) & 0xFF;
         },
 
         getNextBytesAsNumber: function (steps) {
