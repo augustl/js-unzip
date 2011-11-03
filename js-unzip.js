@@ -94,9 +94,9 @@
             this.currentByteIndex = 0;
         },
 
-        // TODO: Other similar JS libs does charCodeAt(index) & 0xff. Grok
-        // why, and do that here if neccesary. So far, I've never gotten a
-        // char code higher than 255.
+		// Using &0xFF to avoid problem with char codes higher than 255 in files loaded using XMLHttpRequest
+		// if you are using a base64 encoded file no need for this
+		// safe to remove & 0xFF
         getByteAt: function (index) {
             return this.stream.charCodeAt(index) & 0xFF;
         },
