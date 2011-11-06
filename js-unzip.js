@@ -94,9 +94,6 @@
             this.currentByteIndex = 0;
         },
 
-        // TODO: Other similar JS libs does charCodeAt(index) & 0xff. Grok
-        // why, and do that here if neccesary. So far, I've never gotten a
-        // char code higher than 255.
         getByteAt: function (index) {
             return this.stream.charCodeAt(index);
         },
@@ -129,7 +126,10 @@
             var max = index + steps;
             var i = index;
             while (i < max) {
-                result += String.fromCharCode(this.getByteAt(i));
+                var charCode = this.getByteAt(i);
+                result += String.fromCharCode(charCode);
+                // Accounting for multi-byte strings.
+                max -= Math.floor(charCode / 0xff);
                 i++;
             }
             return result;
