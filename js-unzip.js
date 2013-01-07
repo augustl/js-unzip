@@ -43,8 +43,6 @@
             throw "File is using UTF8. Not supported.";
         }
 
-      
-
         this.crc32              = binaryStream.getNextBytesAsNumber(4);
         this.compressedSize     = binaryStream.getNextBytesAsNumber(4);
         this.uncompressedSize   = binaryStream.getNextBytesAsNumber(4);
@@ -59,7 +57,7 @@
         this.fileName  = binaryStream.getNextBytesAsString(this.fileNameLength);
         this.extra     = binaryStream.getNextBytesAsString(this.extraFieldLength);
         this.data      = binaryStream.getNextBytesAsString(this.compressedSize);
-        
+
         if (this.isUsingBit3TrailingDataDescriptor()) {
             console.log( "File is using bit 3 trailing data descriptor. Not supported.");
             binaryStream.getNextBytesAsNumber(16);  //Skip the descriptor and move to beginning of next ZipEntry
