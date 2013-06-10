@@ -132,7 +132,7 @@
                 var charCode = this.getByteAt(i);
                 result += String.fromCharCode(charCode);
                 // Accounting for multi-byte strings.
-                max -= Math.floor(charCode / 0xff);
+                max -= Math.floor(charCode / 0x100);
                 i++;
             }
             return result;
