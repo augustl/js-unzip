@@ -29,7 +29,7 @@ entry.fileName;          // The file name of the entry. Contains the full path.
                          // Examples:
                          //   "foo.txt"
                          //   "directory/bar.jpg"
-entry.data;              // The raw uncompressed data
+entry.data;              // The raw compressed data
 entry.compressionMethod; // Number representing compression method.
                          //   1: No compression. File can be used as-is.
                          //   8: DEFLATE. The most common compression method.
