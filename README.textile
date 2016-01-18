@@ -3,3 +3,5 @@ h2. JSUnzip
 This project is deprecated.
 
 A great alternative: https://gildas-lormeau.github.io/zip.js/
+
+The old code is available here: https://github.com/augustl/js-unzip/tree/8b8260da4d6b2189e02e1ca76592c729e1a7b307
